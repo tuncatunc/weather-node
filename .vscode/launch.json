@@ -8,7 +8,7 @@
             "type": "node",
             "request": "launch",
             "name": "Launch Program",
-            "program": "${workspaceRoot}\\app.js",
+            "program": "${workspaceRoot}\\playground\\promise-request.js",
             "cwd": "${workspaceRoot}",
             "args": [
                 "--address",
