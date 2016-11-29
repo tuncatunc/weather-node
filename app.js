@@ -29,7 +29,8 @@ geocode.getLocation(argv.address, (errorMessage, results) => {
             if (error)
                 console.log(error);
             else
-                console.log(`Current Temperature is ${current.temperature}`);
+                console.log(`Current Temperature is ${current.temperature}, it feels like ${current.apparentTemperature}`);
         })
     }
 });
+
