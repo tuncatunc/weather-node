@@ -1,8 +1,20 @@
-const request = require('request');
+var argv = require('yargs')
+    .options({
+        a:{
+            demand: true,
+            alias: 'address',
+            describe: 'Address to fetch weather for.',
+            string: true
+        }
+    })
+    .help()
+    .argv;
 
-request({
-    url: 'http://maps.googleapis.com/maps/api/geocode/json?address=%C3%A7ankaya%20ankara%20t%C3%BCrkiye',
-    json: true
-}, (error, response, body) => {
-    console.log(JSON.stringify(body, undefined, 2));
+const geocode = require('./geocode/geocode.js');
+
+var code = geocode.getGeocode(argv.address, (errorMessage, results) => {
+    if (errorMessage)
+        console.log(JSON.stringify(errorMessage));
+    else
+        console.log(JSON.stringify(results));
 });
