@@ -26,10 +26,9 @@ axios.get(geocodeUrl)
         console.log(response.data.results[0].formatted_address);
         var weatherUrl = `https://api.darksky.net/forecast/${darkSkyApiKey}/${lat},${lng}?lang=tr&units=auto`;
         
-        axios.get(weatherUrl)
-            .then((response) => {console.log(response.data.currently.temperature)})
-            .catch((e) => {console.error(e)});
+        return axios.get(weatherUrl);
     })
+    .then((response) => {console.log(response.data.currently.temperature)})
     .catch((e) => {
         if (e.code === 'ENOTFOUND') console.error('Unable to connect to API servers!');
         else console.error(e.message);
